@@ -5,7 +5,19 @@ let colorSelected;
 
 // Add a row
 function addR() {
-    alert("Clicked Add Row"); // Replace this line with your code.
+    let row = document.createElement('tr');
+    let grid = document.getElementById('grid');
+
+    if(numCols == 0) 
+        numCols++; 
+    
+    for(let i = 0; i < numCols; i++) {
+        let child = document.createElement('td');
+        row.appendChild(child); 
+    }
+
+    grid.appendChild(row);
+    numRows++;
 }
 
 // Add a column
@@ -42,4 +54,8 @@ function fillAll(){
 // Clear all cells
 function clearAll(){
     alert("Clicked Clear All"); // Replace this line with your code.
+}
+
+function changeColor(cell) {
+    cell.style.backgroundColor = colorSelected;
 }
