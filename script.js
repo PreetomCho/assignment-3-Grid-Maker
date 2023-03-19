@@ -5,10 +5,10 @@ let colorSelected;
 
 // Add a row
 function addR() {
-    let row = document.createElement('tr');
     let grid = document.getElementById('grid');
+    let row = document.createElement('tr');
 
-    if(numCols == 0) 
+    if(numCols === 0) 
         numCols++; 
     
     for(let i = 0; i < numCols; i++) {
@@ -20,9 +20,22 @@ function addR() {
     numRows++;
 }
 
-// Add a column
+// Add a column (similar to row)
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+    let grid = document.getElementById('grid');
+    let row = document.createElement('tr');
+
+    if (numRows === 0) {
+        numRows++; 
+        grid.appendChild(row); 
+    }
+
+    for (let i = 0; i < numRows; i++) {
+        let child = document.createElement('td');
+        grid.children[i].appendChild(child);
+    }
+
+    numCols++;
 }
 
 // Remove a row
