@@ -40,7 +40,12 @@ function addC() {
 
 // Remove a row
 function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
+    let grid = document.getElementById('grid');
+    grid.deleteRow(-1);
+    numRows--;
+    //if statement to reset grid to prevent potential bug
+    if(numRows === 0) 
+        numCols = 0;
 }
 
 // Remove a column
@@ -69,6 +74,7 @@ function clearAll(){
     alert("Clicked Clear All"); // Replace this line with your code.
 }
 
+//newly implemented to code changing color easier
 function changeColor(cell) {
     cell.style.backgroundColor = colorSelected;
 }
