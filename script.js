@@ -42,7 +42,9 @@ function addC() {
 function removeR() {
     let grid = document.getElementById('grid');
     grid.deleteRow(-1);
-    numRows--;
+    
+    if(numRows > 0) //prevent counter from going below 0
+        numRows--;
     //if statement to reset grid to prevent potential bug
     if(numRows === 0) 
         numCols = 0;
@@ -50,7 +52,17 @@ function removeR() {
 
 // Remove a column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
+    let grid = document.getElementById("grid"); 
+
+    for (let i = 0; i < numRows; i++) {
+        grid.rows[i].deleteCell(-1);
+    }
+
+    if(numCols > 0) //prevent counter from going below 0
+        numCols--; 
+    //similar if statement as removeR() for the same reason
+    if(numCols === 0) 
+        numRows = 0;
 }
 
 // Set global variable for selected color
@@ -72,9 +84,4 @@ function fillAll(){
 // Clear all cells
 function clearAll(){
     alert("Clicked Clear All"); // Replace this line with your code.
-}
-
-//newly implemented to code changing color easier
-function changeColor(cell) {
-    cell.style.backgroundColor = colorSelected;
 }
