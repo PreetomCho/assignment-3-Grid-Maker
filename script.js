@@ -13,6 +13,7 @@ function addR() {
     
     for(let i = 0; i < numCols; i++) {
         let child = document.createElement('td');
+        child.setAttribute('onclick', 'changeColor(this)');
         row.appendChild(child); 
     }
 
@@ -24,7 +25,6 @@ function addR() {
 function addC() {
     let grid = document.getElementById('grid');
     let row = document.createElement('tr');
-
     if (numRows === 0) {
         numRows++; 
         grid.appendChild(row); 
@@ -32,6 +32,7 @@ function addC() {
 
     for (let i = 0; i < numRows; i++) {
         let child = document.createElement('td');
+        child.setAttribute('onclick', 'changeColor(this)');
         grid.children[i].appendChild(child);
     }
 
@@ -81,7 +82,7 @@ function fillU(){
 }
 
 // Fill all cells
-//same as fillU() except without the if statement
+//similar to fillU(), except without the if statement
 function fillAll(){
     let cells = document.getElementsByTagName('td')
     for(let i = 0; i < cells.length; i++) {
@@ -90,9 +91,16 @@ function fillAll(){
 }
 
 // Clear all cells
+//also similar to fillU and fillAll, except remove the color
 function clearAll(){
     let cells = document.getElementsByTagName('td');
     for(let i = 0; i < cells.length; i++) {
         cells[i].style.backgroundColor = '';
     }
+}
+
+//created change color function to change color on click for adding rows/columns
+//used given selectColor() function as reference
+function changeColor(cells) {
+    cells.style.backgroundColor = colorSelected;
 }
